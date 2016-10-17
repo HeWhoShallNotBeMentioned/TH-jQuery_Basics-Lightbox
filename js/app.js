@@ -3,14 +3,18 @@
 
 var $overlay = $('<div id="overlay"></div>');
 var $image = $("<img>");
+var $caption = $("<p></p>");
 
 // Add an image to overlay
 $overlay.append($image);
 
+// Add a caption
+$overlay.append($caption);
+
 // Add an overlay to page
 $('body').append($overlay);
 
-// Add a caption
+
 
 // Capture the click event on a link to an image
 $('#imageGallery a').click(function(event) {
@@ -18,11 +22,18 @@ $('#imageGallery a').click(function(event) {
   var imageLocation = $(this).attr("href");
   // Update the overlay with the image linked in the link
   $image.attr("src", imageLocation);
+
+  // Get child alt attribute
+  var imageCaption = $(this).children("img").attr("alt");
+
+  //Set Caption
+  $caption.text(imageCaption);
+
   // Show the overlay
   $overlay.show();
 
 
-  // Get child alt attribute and set caption
+
 });
 
 
